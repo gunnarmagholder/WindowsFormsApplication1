@@ -9,17 +9,66 @@ namespace WindowsFormsApplication1
     class Questionaire
     {
         private int iQuestionsToGo = 3;
-        private String[] arrQuestions = new String[5] {"Eins", "Zwei", "Drei", "Vier", "Fünf"};
-        private String[] arrAnswers = new String[5] {"Eins", "Zwei", "Drei", "Vier", "Fünf"};
+        private int iCurrentQuestion;
+        private bool bRightAnswer = false;
+        private bool CanExit = false;
+        private String strPasscode = "MeinGeheimesKennwort";
+        private String[] arrQuestions = new String[9] {"Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun"};
+        private String[] arrAnswers = new String[9] { "Eins", "Zwei", "Drei", "Vier", "Fünf", "Sechs", "Sieben", "Acht", "Neun" };
 
-        public bool AnotherQuestion()
+        public int RemainingQuestions()
         {
-            return false;
+            return iQuestionsToGo;
+        }
+
+        public bool LastQuestionCorrectAnswered()
+        {
+            return bRightAnswer;
+        }
+
+        public String getQuestion()
+        {
+            Random rnd = new Random();
+            iCurrentQuestion = rnd.Next(this.arrQuestions.Length);
+            while (arrQuestions[iCurrentQuestion] == null)
+            {
+                iCurrentQuestion = rnd.Next(this.arrQuestions.Length);
+            }
+            return arrQuestions[iCurrentQuestion];
+        }
+
+        public bool AnotherQuestion(String answer)
+        {
+            if (answer == strPasscode)
+            {
+                CanExit = true;
+                return false;
+            }
+            if ((answer == arrAnswers[iCurrentQuestion]))
+            {
+                iQuestionsToGo = iQuestionsToGo - 1;
+                arrQuestions[iCurrentQuestion] = null;
+                if (iQuestionsToGo == 0)
+                {
+                    CanExit = true;
+                    return false;
+                }
+                else
+                {
+                    bRightAnswer = true;
+                    return true;
+                }
+            }
+            else
+            {
+                bRightAnswer = false;
+                return true;
+            }
         }
 
         public bool CheckExit()
         {
-            return true;
+            return CanExit;
         }
     }
 }

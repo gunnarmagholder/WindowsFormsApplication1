@@ -31,16 +31,17 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lblQuestion = new System.Windows.Forms.Label();
             this.tbAnswer = new System.Windows.Forms.TextBox();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnExit
             // 
-            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExit.Location = new System.Drawing.Point(264, 353);
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnExit.Location = new System.Drawing.Point(256, 205);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(225, 73);
             this.btnExit.TabIndex = 0;
-            this.btnExit.Text = "Kill Me";
+            this.btnExit.Text = "Einreichen";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -60,7 +61,18 @@
             this.tbAnswer.Location = new System.Drawing.Point(85, 105);
             this.tbAnswer.Name = "tbAnswer";
             this.tbAnswer.Size = new System.Drawing.Size(225, 20);
-            this.tbAnswer.TabIndex = 2;
+            this.tbAnswer.TabIndex = 0;
+            this.tbAnswer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(336, 175);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(86, 13);
+            this.lblMessage.TabIndex = 3;
+            this.lblMessage.Text = "NachrichtenText";
             // 
             // Form1
             // 
@@ -68,6 +80,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 455);
             this.ControlBox = false;
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.tbAnswer);
             this.Controls.Add(this.lblQuestion);
             this.Controls.Add(this.btnExit);
@@ -91,6 +104,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblQuestion;
         private System.Windows.Forms.TextBox tbAnswer;
+        private System.Windows.Forms.Label lblMessage;
     }
 }
 
